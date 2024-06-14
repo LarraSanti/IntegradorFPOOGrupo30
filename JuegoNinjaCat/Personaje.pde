@@ -5,7 +5,7 @@ class Personaje extends GameObject{
   
   //Constructores
   public Personaje(){
-    imagen= loadImage("");
+    imagen= loadImage("NinjaCat.png");
   }
   
   //Métodos
