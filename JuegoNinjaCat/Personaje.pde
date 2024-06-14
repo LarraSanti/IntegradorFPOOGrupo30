@@ -3,7 +3,7 @@ class Personaje{
   private int puntaje; 
   private int vida; 
   
-  //Metodos
+  //Métodos
   public void mover(){
   
   }

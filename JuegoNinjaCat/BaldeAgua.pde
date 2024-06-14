@@ -1,0 +1,3 @@
+class BaldeAgua extends Objeto{
+
+}

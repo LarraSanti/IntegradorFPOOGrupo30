@@ -1,0 +1,3 @@
+class Shuriken extends Objeto{
+
+}

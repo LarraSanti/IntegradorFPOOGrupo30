@@ -1,0 +1,3 @@
+class BonusSushi extends Objeto{
+
+}
