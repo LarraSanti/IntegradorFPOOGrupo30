@@ -1,6 +1,6 @@
 class Personaje extends GameObject{
   //Atributos
-  private int puntaje; 
+  private int experiencia; 
   private int vida; 
   
   //Constructores
@@ -10,6 +10,10 @@ class Personaje extends GameObject{
   
   //Métodos
   public void mover(){
+  
+  }
+  
+  public void deslizar(){
   
   }
    

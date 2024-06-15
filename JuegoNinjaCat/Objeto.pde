@@ -1,8 +1,7 @@
 abstract class Objeto extends GameObject{
-  
+  private PVector direccion;
   //Métodos
-  public void mover(){
-  }
+  public abstract void mover();
   
   //Métodos accesores
   public void setPosicion(PVector posicion){

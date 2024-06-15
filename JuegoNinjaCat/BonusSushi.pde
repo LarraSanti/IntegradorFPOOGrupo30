@@ -4,5 +4,9 @@ class BonusSushi extends Objeto{
   public BonusSushi(){
   imagen= loadImage("Sushi.png");
   }
+  
+  //Metodos
+  public void mover(){
+  }
 
 }
