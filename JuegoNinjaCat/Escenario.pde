@@ -19,10 +19,6 @@ class Escenario{
     image(imagen,posicion.x,posicion.y, 640,480);
   }
   
-  public void obtenerPuntaje(){
-  
-  }
-  
   //Metodos accesores
    public void setPosicion(PVector posicion){
     this.posicion=posicion; 
