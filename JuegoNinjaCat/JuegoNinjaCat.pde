@@ -1,12 +1,17 @@
 private Escenario escenario;
-private PImage imagen;
+private PImage fondo;
 private int inicio=0;
+private PImage titulo;
+private PImage start;
 
 public void setup(){
   size(640,480);
   escenario = new Escenario();
   escenario.setPosicion(new PVector (0,0));
-  imagen=loadImage("PantallaInicio.jpeg");
+  start=loadImage("Press Start.png");
+  titulo=loadImage("TITLE.png");
+  fondo=loadImage("PantallaInicio.jpeg");
+ 
 }
 
 public void draw(){
@@ -18,9 +23,9 @@ public void draw(){
    }
 }
 public void pantallaInicio(){
-  image(imagen, 0,0,640,480);
-  textSize(40);
-  text("PRESIONE ENTER PARA EMPEZAR", 50, height/2);
+  image(fondo, 0,0,640,480);
+  image(titulo,160,100,300,50);
+  image(start,140,230,300,50);
   
 }
 public void inicioJuego(){
