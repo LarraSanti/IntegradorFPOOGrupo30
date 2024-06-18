@@ -4,5 +4,10 @@ class BaldeAgua extends Objeto{
   public BaldeAgua(){
       imagen= loadImage("BaldeAgua.png");
   }
+  
+  //Metodos
+  public void mover(){
+  
+  }
 
 }
