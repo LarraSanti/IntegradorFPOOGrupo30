@@ -4,9 +4,16 @@ abstract class GameObject {
   protected PImage imagen; 
   protected PVector velocidad; 
   
-  //Métodos
-  public void mover(){
+  //Constructores
+  public GameObject(){
+  
+  }
+  //Constructor parametrizado
+  public GameObject(PVector posicion, PVector velocidad) {
+    this.posicion = posicion;
+    this.velocidad = velocidad;
   }
   
-  
+  //Métodos
+  public abstract PVector mover();
 }

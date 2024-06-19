@@ -5,9 +5,14 @@ class BaldeAgua extends Objeto{
       imagen= loadImage("BaldeAgua.png");
   }
   
-  //Metodos
-  public void mover(){
+  //Constructor Parametrizado
+  public BaldeAgua(PVector direccion){
+    super(direccion);
+  }
   
+  //Metodos
+  public PVector mover(){
+    return this.direccion;
   }
 
 }

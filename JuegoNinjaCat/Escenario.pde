@@ -4,12 +4,13 @@ class Escenario{
   private Objeto objetos;
   private Personaje personaje;
   private PVector posicion;
+  private HUD hud;
   
   //Constructores
   public Escenario(){
     imagen=loadImage("Background.jpg");
   }
-  
+  //Constructor parametrizado
   public Escenario(PVector posicion){
     this.posicion = posicion;
   }

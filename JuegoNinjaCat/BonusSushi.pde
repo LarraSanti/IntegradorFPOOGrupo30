@@ -5,8 +5,14 @@ class BonusSushi extends Objeto{
   imagen= loadImage("Sushi.png");
   }
   
+  //Constructor Parametrizado
+  public BonusSushi(PVector direccion){
+    super(direccion);
+  }
+  
   //Metodos
-  public void mover(){
+  public PVector mover(){
+    return this.direccion;
   }
 
 }

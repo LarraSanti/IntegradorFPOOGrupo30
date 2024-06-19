@@ -3,8 +3,12 @@ class Shuriken extends Objeto{
   public Shuriken(){
     imagen= loadImage("Shuriken.png");
   }
+  public Shuriken(PVector direccion){
+    super(direccion);
+  }
   
   //Metodos 
-   public void mover(){
+   public PVector mover(){
+     return this.direccion;
    }
 }
