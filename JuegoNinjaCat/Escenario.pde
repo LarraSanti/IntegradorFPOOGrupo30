@@ -9,6 +9,9 @@ class Escenario{
   //Constructores
   public Escenario(){
     imagen=loadImage("Background.jpg");
+    personaje= new Personaje();
+    personaje.setPosicion(new PVector(width/2, height-90));
+    
   }
   //Constructor parametrizado
   public Escenario(PVector posicion){
@@ -17,7 +20,8 @@ class Escenario{
   
   //Metodos
   public void dibujar(){
-    image(imagen,posicion.x,posicion.y, 640,480);
+    image(imagen,this.posicion.x, this.posicion.y, width, height);
+    personaje.display();
   }
   
   //Metodos accesores

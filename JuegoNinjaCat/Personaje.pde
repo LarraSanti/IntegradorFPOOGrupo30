@@ -14,6 +14,10 @@ class Personaje extends GameObject{
   }
   
   //Métodos
+  
+  public void display(){
+    image(imagen, this.posicion.x, this.posicion.y,100,100);
+  }
   public PVector mover(){
     return this.posicion;
   }
