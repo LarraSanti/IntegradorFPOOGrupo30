@@ -11,6 +11,7 @@ class Escenario{
     imagen=loadImage("Background.jpg");
     personaje= new Personaje();
     personaje.setPosicion(new PVector(width/2, height-90));
+    personaje.setVelocidad(new PVector(5,5));
     
   }
   //Constructor parametrizado
@@ -23,6 +24,7 @@ class Escenario{
     image(imagen,this.posicion.x, this.posicion.y, width, height);
     personaje.display();
   }
+ 
   
   //Metodos accesores
    public void setPosicion(PVector posicion){

@@ -7,8 +7,6 @@ class PerroMadera extends Objeto{
     super(direccion);
   }
   //Metodos
-  public PVector mover(){
-    return this.direccion;
-  
+  public void mover(int direccion){
   }
 }

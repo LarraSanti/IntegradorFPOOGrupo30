@@ -34,7 +34,7 @@ public void draw(){
    }
 }
 public void verPantallaInicio(){
-  image(fondo, 0,0,640,480);
+  image(fondo, 0,0,width,height);
   image(titulo,160,100,300,50);
   image(start,140,230,300,50);
   
@@ -49,5 +49,12 @@ public void iniciarJuego(){
 public void keyPressed(){
   if(inicio==0 && key==ENTER){
     inicio=1;
-  } 
+  }else if (inicio==1){
+    if (key=='a' || keyCode==LEFT){
+      escenario.personaje.mover(3);
+  }
+  if (key=='d' || keyCode==RIGHT){
+      escenario.personaje.mover(1);
+  }
+  }
 }
