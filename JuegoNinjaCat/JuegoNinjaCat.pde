@@ -55,6 +55,8 @@ public void iniciarJuego(){
   if(joyPad.isLeftPressed()){
     escenario.personaje.mover(0);
   }
+  escenario.personaje.aplicarGravedad();
+ 
 }
 public void keyPressed(){
   if(inicio==0 && key==ENTER){
@@ -67,6 +69,9 @@ public void keyPressed(){
     }
     if (key=='d' || keyCode==RIGHT){
       joyPad.setRightPressed(true);
+    }
+    if (key==' ') {
+      escenario.personaje.saltar();
     }
   }
 }
