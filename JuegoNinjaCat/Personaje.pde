@@ -24,17 +24,18 @@ class Personaje extends GameObject{
  
   public void mover(int direccion){
     switch(direccion){
-      case 1:{
-        this.posicion.x+=this.velocidad.x;
-        if (this.posicion.x>width){
-          this.posicion.x=-100;
-        }
-        break;
-      }
-      case 3: {
+      case 0:{
         this.posicion.x-=this.velocidad.x;
         if(this.posicion.x<-100){
           this.posicion.x=width;
+        }
+        break;
+        
+      }
+      case 1: {
+        this.posicion.x+=this.velocidad.x;
+        if (this.posicion.x>width){
+          this.posicion.x=-100;
         }
         break;
       }

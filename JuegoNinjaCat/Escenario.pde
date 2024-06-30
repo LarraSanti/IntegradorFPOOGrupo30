@@ -1,9 +1,10 @@
 class Escenario{
   //Atributos
+  private PVector posicion;
   private PImage imagen;
   private Objeto objetos;
   private Personaje personaje;
-  private PVector posicion;
+  
   private HUD hud;
   
   //Constructores

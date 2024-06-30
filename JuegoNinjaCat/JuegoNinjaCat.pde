@@ -1,5 +1,6 @@
 private Escenario escenario;
 private ManejadorDeObjetos manejadorObjetos;
+private JoyPad joyPad;
 private BonusSushi sushi;
 private Shuriken shuriken;
 private BaldeAgua baldeAgua;
@@ -15,6 +16,7 @@ public void setup(){
   escenario = new Escenario();
   escenario.setPosicion(new PVector (0,0));
   manejadorObjetos=new ManejadorDeObjetos();
+  joyPad= new JoyPad();
   sushi=new BonusSushi(new PVector(0,0));
   shuriken= new Shuriken(new PVector(0,0));
   baldeAgua= new BaldeAgua(new PVector(0,0));
@@ -45,16 +47,35 @@ public void iniciarJuego(){
   manejadorObjetos.mover(shuriken);
   manejadorObjetos.mover(baldeAgua);
   manejadorObjetos.mover(perroMadera);
+  //JoyPad
+  
+  if(joyPad.isRightPressed()){
+    escenario.personaje.mover(1);
+  }
+  if(joyPad.isLeftPressed()){
+    escenario.personaje.mover(0);
+  }
 }
 public void keyPressed(){
   if(inicio==0 && key==ENTER){
     inicio=1;
+    
   }else if (inicio==1){
+    
     if (key=='a' || keyCode==LEFT){
-      escenario.personaje.mover(3);
+      joyPad.setLeftPressed(true);
+    }
+    if (key=='d' || keyCode==RIGHT){
+      joyPad.setRightPressed(true);
+    }
   }
-  if (key=='d' || keyCode==RIGHT){
-      escenario.personaje.mover(1);
+}
+
+public void keyReleased(){
+    if (key== 'd' || keyCode==RIGHT){
+      joyPad.setRightPressed(false);
   }
+    if (key== 'a' || keyCode==LEFT){
+      joyPad.setLeftPressed(false);
   }
 }
