@@ -15,5 +15,5 @@ abstract class GameObject {
   }
   
   //Métodos
-  public abstract PVector mover();
+  public abstract void mover(int direccion);
 }

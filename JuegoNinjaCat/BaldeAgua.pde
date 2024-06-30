@@ -11,8 +11,7 @@ class BaldeAgua extends Objeto{
   }
   
   //Metodos
-  public PVector mover(){
-    return this.direccion;
+  public void mover(int direccion){
   }
 
 }

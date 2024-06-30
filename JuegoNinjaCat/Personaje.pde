@@ -14,10 +14,34 @@ class Personaje extends GameObject{
   }
   
   //Métodos
-  public PVector mover(){
-    return this.posicion;
+  
+  public void display(){
+    image(imagen, this.posicion.x, this.posicion.y,100,100);
   }
   
+  //Mueve la posicion, hacia la izquierda o derecha, segun lo que se indique en el atributo velocidad
+  //direccion (3:izquierda;1:derecha)
+ 
+  public void mover(int direccion){
+    switch(direccion){
+      case 0:{
+        this.posicion.x-=this.velocidad.x;
+        if(this.posicion.x<-100){
+          this.posicion.x=width;
+        }
+        break;
+        
+      }
+      case 1: {
+        this.posicion.x+=this.velocidad.x;
+        if (this.posicion.x>width){
+          this.posicion.x=-100;
+        }
+        break;
+      }
+    }    
+  }
+
   public void deslizar(){
   }
    
