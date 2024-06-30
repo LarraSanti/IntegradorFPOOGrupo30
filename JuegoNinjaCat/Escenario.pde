@@ -22,7 +22,7 @@ class Escenario{
   
   //Metodos
   public void dibujar(){
-    image(imagen,this.posicion.x, this.posicion.y, width, height);
+    image(imagen,this.posicion.x, this.posicion.y, width, height+20);
     personaje.display();
   }
  
