@@ -13,5 +13,8 @@ class BonusSushi extends Objeto{
   //Metodos
   public void mover(int direccion){
   }
+  
+  public void display(){
+  }
 
 }

@@ -1,10 +1,6 @@
 private Escenario escenario;
 private ManejadorDeObjetos manejadorObjetos;
 private JoyPad joyPad;
-private BonusSushi sushi;
-private Shuriken shuriken;
-private BaldeAgua baldeAgua;
-private PerroMadera perroMadera;
 private PImage fondo;
 private int inicio=0;
 private PImage titulo;
@@ -17,10 +13,6 @@ public void setup(){
   escenario.setPosicion(new PVector (0,0));
   manejadorObjetos=new ManejadorDeObjetos();
   joyPad= new JoyPad();
-  sushi=new BonusSushi(new PVector(0,0));
-  shuriken= new Shuriken(new PVector(0,0));
-  baldeAgua= new BaldeAgua(new PVector(0,0));
-  perroMadera= new PerroMadera(new PVector(0,0));
   start=loadImage("Press Start.png");
   titulo=loadImage("TITLE.png");
   fondo=loadImage("PantallaInicio.jpeg");
@@ -43,10 +35,7 @@ public void verPantallaInicio(){
 }
 public void iniciarJuego(){
   escenario.dibujar();
-  manejadorObjetos.mover(sushi);
-  manejadorObjetos.mover(shuriken);
-  manejadorObjetos.mover(baldeAgua);
-  manejadorObjetos.mover(perroMadera);
+  //manejadorObjetos.mover();
   //JoyPad
   
   if(joyPad.isRightPressed()){

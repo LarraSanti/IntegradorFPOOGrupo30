@@ -9,4 +9,7 @@ class PerroMadera extends Objeto{
   //Metodos
   public void mover(int direccion){
   }
+  
+  public void display(){
+  }
 }
