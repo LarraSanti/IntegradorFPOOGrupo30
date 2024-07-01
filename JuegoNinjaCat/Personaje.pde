@@ -1,4 +1,4 @@
-class Personaje extends GameObject{
+class Personaje extends GameObject implements IVisualizable{
   //Atributos
   private int experiencia;   //Indica la experiencia que ha obtenido el personaje
   private int vida;  //Indica cuanta vida tiene el personaje
