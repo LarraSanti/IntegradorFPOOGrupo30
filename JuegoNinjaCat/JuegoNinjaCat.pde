@@ -1,16 +1,15 @@
 private Escenario escenario;
 private ManejadorDeObjetos manejadorObjetos;
 private JoyPad joyPad;
+private int estado; //Indica en que estado se encuentra el juego
 private PImage fondo;
-private int inicio=0;
 private PImage titulo;
 private PImage start;
 
 
 public void setup(){
   size(640,480);
-  escenario = new Escenario();
-  escenario.setPosicion(new PVector (0,0));
+  estado= MaquinaDeEstados.INICIANDO;
   manejadorObjetos=new ManejadorDeObjetos();
   joyPad= new JoyPad();
   start=loadImage("Press Start.png");
@@ -21,11 +20,27 @@ public void setup(){
 
 public void draw(){
   background(0);
-  if (inicio==0){
+  switch(estado){
+    case MaquinaDeEstados.INICIANDO:
+      verPantallaInicio();
+      break;
+    case MaquinaDeEstados.JUGANDO:
+      iniciarJuego();
+      break;
+    case MaquinaDeEstados.GANANDO_PARTIDA:
+      break;
+    case MaquinaDeEstados.PERDIENDO_PARTIDA:
+      break;
+      
+  }
+  
+  
+  /**if (inicio==0){
      verPantallaInicio();   //Muestra la pantalla de iniciopa
    }else if (inicio==1){
      iniciarJuego();  //Se inicia el juego
    }
+   */
 }
 public void verPantallaInicio(){
   image(fondo, 0,0,width,height);
@@ -48,28 +63,27 @@ public void iniciarJuego(){
  
 }
 public void keyPressed(){
-  if(inicio==0 && key==ENTER){
-    inicio=1;
-    
-  }else if (inicio==1){
-    
-    if (key=='a' || keyCode==LEFT){
+  if (keyCode == ENTER && (estado == MaquinaDeEstados.INICIANDO || estado == MaquinaDeEstados.PERDIENDO_PARTIDA || estado == MaquinaDeEstados.GANANDO_PARTIDA)) {
+    estado = MaquinaDeEstados.JUGANDO;
+    escenario = new Escenario();
+    escenario.setPosicion(new PVector (0,0));
+  }    
+  if (key=='a' || keyCode==LEFT && estado==MaquinaDeEstados.JUGANDO){
       joyPad.setLeftPressed(true);
-    }
-    if (key=='d' || keyCode==RIGHT){
-      joyPad.setRightPressed(true);
-    }
-    if (key==' ') {
-      escenario.personaje.saltar();
-    }
   }
-}
+  if (key=='d' || keyCode==RIGHT && estado==MaquinaDeEstados.JUGANDO){
+      joyPad.setRightPressed(true);
+  }
+  if (key==' ' || keyCode==BACKSPACE && estado==MaquinaDeEstados.JUGANDO) {
+      escenario.personaje.saltar();
+  }
+  }
 
 public void keyReleased(){
-    if (key== 'd' || keyCode==RIGHT){
+    if (key== 'd' || keyCode==RIGHT && estado==MaquinaDeEstados.JUGANDO){
       joyPad.setRightPressed(false);
   }
-    if (key== 'a' || keyCode==LEFT){
+    if (key== 'a' || keyCode==LEFT && estado==MaquinaDeEstados.JUGANDO){
       joyPad.setLeftPressed(false);
   }
 }
