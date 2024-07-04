@@ -33,14 +33,6 @@ public void draw(){
       break;
       
   }
-  
-  
-  /**if (inicio==0){
-     verPantallaInicio();   //Muestra la pantalla de iniciopa
-   }else if (inicio==1){
-     iniciarJuego();  //Se inicia el juego
-   }
-   */
 }
 public void verPantallaInicio(){
   image(fondo, 0,0,width,height);
