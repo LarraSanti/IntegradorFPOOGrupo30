@@ -62,6 +62,9 @@ public void keyPressed(){
   if (key=='d' || keyCode==RIGHT && estado==MaquinaDeEstados.JUGANDO){
       joyPad.setRightPressed(true);
   }
+  if (key==' ' && estado==MaquinaDeEstados.JUGANDO) {
+      escenario.personaje.saltar();
+  }
 }
 public void keyReleased(){
     if (key== 'd' || keyCode==RIGHT && estado==MaquinaDeEstados.JUGANDO){
@@ -70,7 +73,5 @@ public void keyReleased(){
     if (key== 'a' || keyCode==LEFT && estado==MaquinaDeEstados.JUGANDO){
       joyPad.setLeftPressed(false);
   }
-  if (key==' ' && estado==MaquinaDeEstados.JUGANDO) {
-      escenario.personaje.saltar();
-  }
+ 
 }
