@@ -30,9 +30,29 @@ class Personaje implements IVisualizable{
   //Métodos
   
   public void display(){
-    this.imageComponent.displayImage(transform.getPosition(),100,100);
+    this.imageComponent.displayImage(transform.getPosicion(),100,100);
   }
-  public void mover(){
+  
+  //Mueve la posicion, hacia la izquierda o derecha, segun lo que se indique en el atributo velocidad
+  //direccion (0:izquierda;1:derecha)
+  public void mover(int direccion){
+    switch(direccion){
+      case 0:{
+        this.transform.getPosicion().x-=(this.velocidad.x*Time.getDeltaTime(frameRate));
+        if(this.transform.getPosicion().x<-100){
+          this.transform.getPosicion().x=width;
+        }
+        break;
+        
+      }
+      case 1: {
+        this.transform.getPosicion().x+=(this.velocidad.x *Time.getDeltaTime(frameRate));
+        if (this.transform.getPosicion().x>width){
+          this.transform.getPosicion().x=-100;
+        }
+        break;
+      }
+    }
   }
   
   public void deslizar(){
