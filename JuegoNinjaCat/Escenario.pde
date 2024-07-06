@@ -4,7 +4,7 @@ class Escenario{
   private PImage imagen;
   private ArrayList<Objeto> objetos;
   private Personaje personaje;
-  //private Hud hud; 
+  private Hud hud; 
   
   
   //Constructores
@@ -20,6 +20,9 @@ class Escenario{
     //OBJETOS//
     objetos=new ArrayList<Objeto>();
     agregarObjetos();
+    
+    //HUD//
+    hud = new Hud();
   }
   
   public Escenario(PVector posicion){
@@ -30,6 +33,9 @@ class Escenario{
   public void dibujar(){
     image(imagen,this.posicion.x,this.posicion.y, width,height+25);
     personaje.display();
+    hud.mostrarVida(personaje);
+    hud.mostrarExperiencia(personaje);
+    hud.mostrarNivelActual();
   }
   
   public void agregarObjetos(){
