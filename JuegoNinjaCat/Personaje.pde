@@ -1,8 +1,8 @@
-class Personaje extends GameObject{
+class Personaje{
   //Atributos
   private int experiencia; 
   private int vida; 
-  
+  private PVector velocidad
   //Constructores
   public Personaje(){
     imagen= loadImage("NinjaCat.png");

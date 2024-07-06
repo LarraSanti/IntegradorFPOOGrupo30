@@ -1,5 +1,6 @@
 abstract class Objeto extends GameObject{
   private PVector direccion;
+  private PVector velocidad
   //Métodos
   public abstract void mover();
   
