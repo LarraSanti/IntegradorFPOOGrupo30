@@ -1,11 +1,19 @@
-/*class Shuriken extends Objeto{
+class Shuriken extends Objeto{
   //Constructores
   public Shuriken(){
-    imagen= loadImage("Shuriken.png");
+  }
+  public Shuriken(Transform transform, ImageComponent imageComponent){
+    super(transform, imageComponent);
+  }
+  public Shuriken(Transform transform, ImageComponent imageComponent, PVector velocidad){
+    super(transform, imageComponent, velocidad);
   }
   
-  //Metodos 
-   public void mover(){
-   }
+  //Metodos
+  public void display(){
+  
+  }
+  public void mover(){
+    
+  }
 }
-*/

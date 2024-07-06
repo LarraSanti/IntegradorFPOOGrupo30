@@ -40,6 +40,7 @@ public void verPantallaInicio(){
 }
 public void iniciarJuego(){
   escenario.dibujar();
+  escenario.dibujarObjetos();
   
   if(joyPad.isRightPressed()){
     escenario.personaje.mover(1);

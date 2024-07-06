@@ -1,20 +1,19 @@
-/*
 class BaldeAgua extends Objeto{
  
   //Constructores 
   public BaldeAgua(){
-    imagen= loadImage("BaldeAgua.png");
   }
-  
+  public BaldeAgua(Transform transform, ImageComponent imageComponent){
+    super(transform, imageComponent);
+  }
+  public BaldeAgua(Transform transform, ImageComponent imageComponent, PVector velocidad){
+    super(transform, imageComponent, velocidad);
+  }
   //Metodos
   
-  //por la interfaz
-  public void dibujar(){
-  }
-  
-  public void mover(){
-  
+  public void display(){   
   }
 
+  public void mover(){  
+  }
 }
-/*

@@ -16,6 +16,10 @@ class Escenario{
     Transform transformPersonaje = new Transform(new PVector(width/2,height-90));
     ImageComponent imagePersonaje = new ImageComponent("NinjaCat.png");
     personaje = new Personaje(transformPersonaje,imagePersonaje, new PVector(320,0), 0,7);
+    
+    //OBJETOS//
+    objetos=new ArrayList<Objeto>();
+    agregarObjetos();
   }
   
   public Escenario(PVector posicion){
@@ -26,6 +30,21 @@ class Escenario{
   public void dibujar(){
     image(imagen,this.posicion.x,this.posicion.y, width,height+25);
     personaje.display();
+  }
+  
+  public void agregarObjetos(){
+    Transform transformBonusSushi = new Transform(new PVector(width-100, height/2));
+    ImageComponent imageBonusSushi= new ImageComponent("BonusSushi.png");
+    objetos.add(new BonusSushi(transformBonusSushi, imageBonusSushi, new PVector(0,4)));
+  } 
+  
+  public void dibujarObjetos(){
+    //println(objetos.isEmpty());
+    if (!objetos.isEmpty()){
+      for (Objeto o: objetos){
+        o.display();
+      }
+    }
   }
   
   //Metodos accesores
