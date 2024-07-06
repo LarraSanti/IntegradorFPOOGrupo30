@@ -65,7 +65,6 @@ class Personaje implements IVisualizable{
   }
   
   public void saltar(){
-    println(isJumping);
     if (!isJumping) {
       isJumping= true;
       velocidadVertical = impulso;
