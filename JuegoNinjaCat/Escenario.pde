@@ -1,9 +1,11 @@
 class Escenario{
   //Atributos
-  private PImage imagen;
-  private Objeto objetos;
-  private Personaje personaje;
   private PVector posicion;
+  private PImage imagen;
+  private ArrayList<Objeto> objetos;
+  //private Personaje personaje;
+  //private Hud hud; 
+  
   
   //Constructores
   public Escenario(){
@@ -16,7 +18,7 @@ class Escenario{
   
   //Metodos
   public void dibujar(){
-    image(imagen,posicion.x,posicion.y, 640,480);
+    image(imagen,this.posicion.x,this.posicion.y, width,height+25);
   }
   
   //Metodos accesores

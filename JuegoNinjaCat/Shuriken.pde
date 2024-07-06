@@ -1,4 +1,4 @@
-class Shuriken extends Objeto{
+/*class Shuriken extends Objeto{
   //Constructores
   public Shuriken(){
     imagen= loadImage("Shuriken.png");
@@ -8,3 +8,4 @@ class Shuriken extends Objeto{
    public void mover(){
    }
 }
+*/

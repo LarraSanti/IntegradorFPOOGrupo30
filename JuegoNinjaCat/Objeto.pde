@@ -1,16 +1,16 @@
-abstract class Objeto extends GameObject{
-  private PVector direccion;
-  private PVector velocidad
+abstract class Objeto implements IVisualizable{
+  protected ImageComponent imageComponent;
+  protected Transform transform;
+  protected PVector velocidad;
+  
+  //Constructores 
+  
   //Métodos
   public abstract void mover();
   
-  //Métodos accesores
-  public void setPosicion(PVector posicion){
-    this.posicion=posicion; 
+  //por la interfaz
+  public void dibujar(){
   }
-  
-  public void setVelocidad(PVector velocidad){
-    this.velocidad = velocidad;   
-  }
+ 
   
 }

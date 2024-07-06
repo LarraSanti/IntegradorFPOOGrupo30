@@ -1,8 +1,9 @@
+/*
 class Personaje{
   //Atributos
   private int experiencia; 
   private int vida; 
-  private PVector velocidad
+  private PVector velocidad;
   //Constructores
   public Personaje(){
     imagen= loadImage("NinjaCat.png");
@@ -10,11 +11,9 @@ class Personaje{
   
   //Métodos
   public void mover(){
-  
   }
   
   public void deslizar(){
-  
   }
    
   //Métodos Accesores
@@ -25,7 +24,6 @@ class Personaje{
   public void setVelocidad(PVector velocidad){
     this.velocidad = velocidad;   
   }
-  
-
-  
 }
+
+*/

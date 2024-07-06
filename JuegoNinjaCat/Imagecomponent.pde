@@ -1,4 +1,5 @@
 class ImageComponent {
+  //Atributos
   private PImage imagen;
 
   // Constructor
