@@ -40,6 +40,13 @@ public void verPantallaInicio(){
 }
 public void iniciarJuego(){
   escenario.dibujar();
+  
+  if(joyPad.isRightPressed()){
+    escenario.personaje.mover(1);
+  }
+  if(joyPad.isLeftPressed()){
+    escenario.personaje.mover(0);
+  }
 }
 public void keyPressed(){
   if(keyCode==ENTER && (estado == MaquinaDeEstados.INICIANDO || estado == MaquinaDeEstados.PERDIENDO_PARTIDA || estado == MaquinaDeEstados.GANANDO_PARTIDA)){
@@ -47,4 +54,18 @@ public void keyPressed(){
     escenario = new Escenario();
     escenario.setPosicion(new PVector (0,0));
   } 
+  if (key=='a' || keyCode==LEFT && estado==MaquinaDeEstados.JUGANDO){
+      joyPad.setLeftPressed(true);
+  }
+  if (key=='d' || keyCode==RIGHT && estado==MaquinaDeEstados.JUGANDO){
+      joyPad.setRightPressed(true);
+  }
+}
+public void keyReleased(){
+    if (key== 'd' || keyCode==RIGHT && estado==MaquinaDeEstados.JUGANDO){
+      joyPad.setRightPressed(false);
+  }
+    if (key== 'a' || keyCode==LEFT && estado==MaquinaDeEstados.JUGANDO){
+      joyPad.setLeftPressed(false);
+  }
 }
