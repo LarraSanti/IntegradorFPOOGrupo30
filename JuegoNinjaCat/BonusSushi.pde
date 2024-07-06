@@ -1,21 +1,21 @@
 class BonusSushi extends Objeto{
  
+  
   //Constructores 
   public BonusSushi(){
   }
   public BonusSushi(Transform transform, ImageComponent imageComponent){
-    this.transform=transform;
-    this.imageComponent=imageComponent;
+    super(transform, imageComponent);
   }
   public BonusSushi(Transform transform, ImageComponent imageComponent, PVector velocidad){
-    this.transform=transform;
-    this.imageComponent=imageComponent;
-    this.velocidad=velocidad;
+    super(transform, imageComponent, velocidad);
   }
   //Metodos
   
-  //por la interfaz
   public void display(){
+    //println("Se dibuja");
+    this.imageComponent.displayImage(transform.getPosicion(), 50, 50);
+    
   }
   
   public void mover(){
