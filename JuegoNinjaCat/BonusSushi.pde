@@ -1,14 +1,25 @@
-/*
 class BonusSushi extends Objeto{
-  
-  //Constructores
+ 
+  //Constructores 
   public BonusSushi(){
-  imagen= loadImage("Sushi.png");
+  }
+  public BonusSushi(Transform transform, ImageComponent imageComponent){
+    this.transform=transform;
+    this.imageComponent=imageComponent;
+  }
+  public BonusSushi(Transform transform, ImageComponent imageComponent, PVector velocidad){
+    this.transform=transform;
+    this.imageComponent=imageComponent;
+    this.velocidad=velocidad;
+  }
+  //Metodos
+  
+  //por la interfaz
+  public void display(){
   }
   
-  //Metodos
   public void mover(){
+  
   }
 
 }
-*/
