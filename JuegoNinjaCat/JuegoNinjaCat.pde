@@ -47,6 +47,7 @@ public void iniciarJuego(){
   if(joyPad.isLeftPressed()){
     escenario.personaje.mover(0);
   }
+  escenario.personaje.aplicarGravedad();
 }
 public void keyPressed(){
   if(keyCode==ENTER && (estado == MaquinaDeEstados.INICIANDO || estado == MaquinaDeEstados.PERDIENDO_PARTIDA || estado == MaquinaDeEstados.GANANDO_PARTIDA)){
@@ -67,5 +68,8 @@ public void keyReleased(){
   }
     if (key== 'a' || keyCode==LEFT && estado==MaquinaDeEstados.JUGANDO){
       joyPad.setLeftPressed(false);
+  }
+  if (key==' ' && estado==MaquinaDeEstados.JUGANDO) {
+      escenario.personaje.saltar();
   }
 }

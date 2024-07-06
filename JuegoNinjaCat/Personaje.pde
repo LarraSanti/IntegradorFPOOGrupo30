@@ -5,8 +5,13 @@ class Personaje implements IVisualizable{
   private int experiencia; 
   private int vida; 
   private PVector velocidad;
+  private boolean isJumping;  //Indica si el personaje está saltando o no
+  private float velocidadVertical; //Determina su movimiento hacia arriba o hacia abajo
+  private float gravedad;  //Es la aceleración hacia abajo debida a la gravedad, que afecta la caída del personaje. Modificar este valor afectará la velocidad con la que el personaje cae:
+  private float impulso;   //El impulso que se aplica al saltar para que el personje suba
+  
   //Constructores
-  public Personaje(){
+  public Personaje(){ 
   }
   //Constructores Parametrizados
   
@@ -25,6 +30,10 @@ class Personaje implements IVisualizable{
     this.velocidad=velocidad;
     this.experiencia=experiencia;
     this.vida=vida;
+    isJumping=false;
+    velocidadVertical=0; 
+    gravedad=1.0;
+    impulso=-20;
   }
   
   //Métodos
@@ -51,6 +60,31 @@ class Personaje implements IVisualizable{
           this.transform.getPosicion().x=-100;
         }
         break;
+      }
+    }
+  }
+  
+  public void saltar(){
+    println(isJumping);
+    if (!isJumping) {
+      isJumping= true;
+      velocidadVertical = impulso;
+    }
+  }
+  
+  //Simula la gravedad cuando está en el aire.
+  public void aplicarGravedad(){
+
+    //Aplicar gravedad
+    if (isJumping) { //Si está saltando
+      velocidadVertical += gravedad;  // Incrementa la velocidad vertical con la gravedad
+      this.transform.getPosicion().y += velocidadVertical;  //Actualiza la posicion y del personaje segun la velocidad vertical
+
+  //Verifica si el personaje tocó el piso
+      if (this.transform.getPosicion().y >= height - 90) {
+        this.transform.getPosicion().y = height - 90;  //La posicion y del personaje será el piso, donde esyaba inicialmente
+        velocidadVertical = 0;  //La velocidad vertical será cero, se detiene
+        isJumping = false;   //El personje ya no está saltando, está en el piso
       }
     }
   }
