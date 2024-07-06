@@ -1,4 +1,5 @@
-class HUD{
+/*
+class Hud{
   
   //Metodos
   public void mostrarNivelActual(){
@@ -11,3 +12,4 @@ class HUD{
   }
   
 }
+*/

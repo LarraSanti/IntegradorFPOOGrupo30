@@ -1,19 +1,21 @@
 class Transform {
-  
-  private PVector position;
+  //Atributos
+  private PVector posicion;
 
   // Constructor que inicializa la posición
-  public Transform(PVector position) {
-    this.position = position;
+  public Transform(PVector posicion) {
+    this.posicion = posicion;
   }
-
+  
+  //--Métodos Accesores--//
+  
   // Getter 
-  public PVector getPosition() {
-    return this.position;
+  public PVector getPosicion() {
+    return this.posicion;
   }
 
   // Setter 
-  public void setPosition(PVector position) {
-    this.position = position;
+  public void setPosicion(PVector posicion) {
+    this.posicion = posicion;
   }
 }

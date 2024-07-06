@@ -1,6 +1,8 @@
-class PerroMadera{
+
+/*class PerroMadera{
   //Metodos
   public void mover(){
   
   }
 }
+*/
