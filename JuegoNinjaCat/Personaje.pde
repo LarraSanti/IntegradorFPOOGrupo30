@@ -96,4 +96,19 @@ class Personaje implements IVisualizable{
   public void setVelocidad(PVector velocidad){
     this.velocidad = velocidad;   
   }
+  public PVector getVelocidad(){
+    return this.velocidad;
+  }
+  public void setExperiencia(int experiencia){
+    this.experiencia=experiencia;
+  }
+  public int getExperiencia(){
+    return this.experiencia;
+  }
+  public void setVida(int vida){
+    this.vida=vida;
+  }
+  public int getVida(){
+    return this.vida;
+  }
 }
