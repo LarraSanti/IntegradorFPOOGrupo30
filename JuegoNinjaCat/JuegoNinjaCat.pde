@@ -13,7 +13,8 @@ public void setup(){
   joyPad= new JoyPad();
   start=loadImage("Press Start.png");
   titulo=loadImage("TITLE.png");
-  fondo=loadImage("PantallaInicio.jpeg");
+  fondo=loadImage("Background.jpg");
+
 }
 
 public void draw(){
@@ -26,8 +27,10 @@ public void draw(){
       iniciarJuego();
       break;
     case MaquinaDeEstados.GANANDO_PARTIDA:
+      verPantallaVictoria();
       break;
     case MaquinaDeEstados.PERDIENDO_PARTIDA:
+      verPantallaDerrota();
       break;
       
   }
@@ -35,9 +38,25 @@ public void draw(){
 public void verPantallaInicio(){
   image(fondo, 0,0,width,height);
   image(titulo,160,100,300,50);
-  image(start,140,230,300,50);
+  image(start,160,350,300,50);
   
 }
+public void verPantallaVictoria(){
+  PImage victoria;
+  victoria = loadImage("GANASTE.png");
+  imageMode(CENTER);
+  image(victoria,width/2,height/2);
+   
+}
+
+public void verPantallaDerrota(){
+  PImage derrota;
+  derrota = loadImage("PERDISTE.png");
+  imageMode(CENTER);
+  image(derrota,width/2,height/2);
+   
+}
+
 public void iniciarJuego(){
   escenario.dibujar();
   escenario.dibujarObjetos();
@@ -64,6 +83,12 @@ public void keyPressed(){
   }
   if (key==' ' && estado==MaquinaDeEstados.JUGANDO) {
       escenario.personaje.saltar();
+  }
+  if(key=='f' && (estado == MaquinaDeEstados.JUGANDO)){
+    estado = MaquinaDeEstados.PERDIENDO_PARTIDA;
+  }
+  if(key=='g' && (estado == MaquinaDeEstados.JUGANDO)){
+    estado = MaquinaDeEstados.GANANDO_PARTIDA;
   }
 }
 public void keyReleased(){
