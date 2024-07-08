@@ -62,12 +62,11 @@ public void verPantallaDerrota() {
 
 public void iniciarJuego() {
   player.play(); // Reproduce la música en el juego
-  escenario.dibujar(); 
-  if (frameCount % 30 == 0) { // Genera un nuevo objeto cada segundo (suponiendo 30 FPS)
-    escenario.agregarObjetos();
-  }
-  escenario.manejadorObjetos.moverObjetos(); // Mueve los objetos en el escenario
-  escenario.manejadorObjetos.verificarColisiones(escenario.personaje); // Verifica colisiones
+  escenario.dibujarEscenario(); 
+  escenario.dibujarObjetos();
+  escenario.personaje.display();
+  escenario.verificarColisiones();
+  
   
   // Movimiento del personaje basado en el JoyPad
   if (joyPad.isRightPressed()) {

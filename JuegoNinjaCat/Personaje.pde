@@ -113,6 +113,21 @@ class Personaje implements IVisualizable {
   // Método vacío para deslizar (a implementar)
   public void deslizar() {
   }
+  
+   // Método para reducir la vida del personaje
+  public void reducirVida(int cantidad) {
+    this.vida -= cantidad;
+    if (this.vida < 0) {
+      this.vida = 0;
+    }
+  }
+  //Método para aumentar la experiencia del personaje
+  public void aumentarExperiencia(int cantidad){
+    this.experiencia+=cantidad;
+    if (this.experiencia>200){
+      println("Partida Completada/Ganada");
+    }
+  }
 
   // Setters y getters para velocidad, experiencia y vida
   public void setVelocidad(PVector velocidad) {
@@ -137,13 +152,5 @@ class Personaje implements IVisualizable {
 
   public int getVida() {
     return this.vida;
-  }
-
-  // Método para reducir la vida del personaje
-  public void reducirVida(int cantidad) {
-    this.vida -= cantidad;
-    if (this.vida < 0) {
-      this.vida = 0;
-    }
   }
 }
