@@ -37,17 +37,23 @@ public void verPantallaInicio(){
 }
 public void verPantallaVictoria(){
   PImage victoria;
+  PImage restart;
   victoria = loadImage("GANASTE.png");
+  restart = loadImage("EMPEZARDENUEVO.png");
   imageMode(CENTER);
   image(victoria,width/2,height/2);
+  image(restart,width/2,400,600,50); 
    
 }
 
 public void verPantallaDerrota(){
   PImage derrota;
+  PImage reintentar;
   derrota = loadImage("PERDISTE.png");
+  reintentar = loadImage("REINTENTAR.png");
   imageMode(CENTER);
   image(derrota,width/2,height/2);
+  image(reintentar,width/2,400,600,50); 
    
 }
 
