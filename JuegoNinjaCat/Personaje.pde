@@ -121,6 +121,15 @@ class Personaje implements IVisualizable {
       this.vida = 0;
     }
   }
+  
+  //Método para reducir la experiencia del personaje
+  public void reducirExperiencia(int cantidad) {
+    this.experiencia -= cantidad;
+    if (this.experiencia < 0) {
+      this.experiencia = 0;
+  }
+  }
+  
   //Método para aumentar la experiencia del personaje
   public void aumentarExperiencia(int cantidad){
     this.experiencia+=cantidad;

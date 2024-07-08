@@ -54,9 +54,14 @@ class Escenario {
     objetos.add(new BaldeAgua(transformBaldeAgua, imageBaldeAgua, new PVector(150,0)));
     
     //Inicializar el Shuriken
-    Transform transformShuriken = new Transform(new PVector(width/2, -50));
+    Transform transformShuriken = new Transform(new PVector(width/2, -500));
     ImageComponent imageShuriken= new ImageComponent("Shuriken0.png");
     objetos.add(new Shuriken(transformShuriken, imageShuriken, new PVector(0,170)));
+    
+    //Inicializar el PerroMadera
+    Transform transformPerroMadera = new Transform(new PVector(width/2+100, -500));
+    ImageComponent imagePerroMadera= new ImageComponent("PerroMadera.png");
+    objetos.add(new PerroMadera(transformPerroMadera, imagePerroMadera, new PVector(0,100)));
   }
   
   public void verificarColisiones(){
@@ -71,7 +76,7 @@ class Escenario {
             println("Colisión detectada con Sushi");
             personaje.aumentarExperiencia(5);
             //personaje.setExperiencia(personaje.getExperiencia()+5);
-            crearBonusSushi();         
+            crearNuevoBonusSushi();         
           }
         }
         if (o instanceof BaldeAgua) {
@@ -81,7 +86,7 @@ class Escenario {
             // Acción a realizar en caso de colisión
             println("Colisión detectada con BaldeAgua");
             personaje.reducirVida(1);
-            crearBaldeAgua();
+            crearNuevoBaldeAgua();
           }
         }
         if(o instanceof Shuriken) {
@@ -91,9 +96,19 @@ class Escenario {
             println("Colisión detectada con Shuriken");
             personaje.reducirVida(2);
             //personaje.setExperiencia(personaje.getExperiencia()+5);
-            crearShuriken();         
+            crearNuevoShuriken();         
           }
         } 
+        if(o instanceof PerroMadera) {
+          Colisionador colisionadorPerroMadera = o.getColisionador();
+          if(personaje.getColisionador().verificarColision(colisionadorPerroMadera)){
+            objetos.remove(i);
+            println("Colisión detectada con PerroMadera");
+            personaje.reducirExperiencia(10);
+            //personaje.setExperiencia(personaje.getExperiencia()+5);
+            crearNuevoPerroMadera();         
+          }
+        }
        }
       }
     }
@@ -107,36 +122,46 @@ class Escenario {
         o.display();
         if (o instanceof BonusSushi && o.transform.getPosicion().x < -200) {
             objetos.remove(i);
-            crearBonusSushi();
+            crearNuevoBonusSushi();
         
         }else if (o instanceof BaldeAgua && o.transform.getPosicion().x > width+width) {
           objetos.remove(i);
-          crearBaldeAgua();
+          crearNuevoBaldeAgua();
           
         }else if (o instanceof Shuriken && o.transform.getPosicion().y > height) {
           objetos.remove(i);
-          crearShuriken();
+          crearNuevoShuriken();
+        }else if(o instanceof PerroMadera && o.transform.getPosicion().y > height){
+          objetos.remove(i);
+          crearNuevoPerroMadera();
+          
         }
       }
     }
   }
-  public void crearBonusSushi(){
+  public void crearNuevoBonusSushi(){
     Transform transformBonusSushi = new Transform(new PVector(width, random(this.posicion.y+200,height-80)));
     ImageComponent imageBonusSushi= new ImageComponent("BonusSushi.png");
     BonusSushi nuevoSushi= new BonusSushi(transformBonusSushi, imageBonusSushi, new PVector(150,0));
     objetos.add(nuevoSushi);
   }
-  public void crearBaldeAgua(){
+  public void crearNuevoBaldeAgua(){
     Transform transformBaldeAgua = new Transform(new PVector(-1000, height-45));
     ImageComponent imageBaldeAgua= new ImageComponent("BaldeAgua.png");
     BaldeAgua nuevoBaldeAgua= new BaldeAgua(transformBaldeAgua, imageBaldeAgua, new PVector(150,0));
     objetos.add(nuevoBaldeAgua);
   }
-  public void crearShuriken(){
-    Transform transformShuriken = new Transform(new PVector(random(width), random(-200,-50)));
+  public void crearNuevoShuriken(){
+    Transform transformShuriken = new Transform(new PVector(random(width), random(-500,-50)));
     ImageComponent imageShuriken= new ImageComponent("Shuriken0.png");
     Shuriken nuevoShuriken= new Shuriken(transformShuriken, imageShuriken, new PVector(0,170));
     objetos.add(nuevoShuriken);
+  }
+  public void crearNuevoPerroMadera(){
+    Transform transformPerroMadera = new Transform(new PVector(random(width), random(-500,-50)));
+    ImageComponent imagePerroMadera= new ImageComponent("PerroMadera.png");
+    PerroMadera nuevoPerroMadera=new PerroMadera(transformPerroMadera, imagePerroMadera, new PVector(0,100));
+    objetos.add(nuevoPerroMadera);
   }
   
 
