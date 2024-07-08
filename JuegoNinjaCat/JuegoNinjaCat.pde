@@ -47,17 +47,15 @@ public void verPantallaInicio() {
 public void verPantallaVictoria() {
   PImage victoria = loadImage("GANASTE.png");
   PImage restart = loadImage("EMPEZARDENUEVO.png");
-  imageMode(CENTER);
-  image(victoria, width / 2, height / 2); 
-  image(restart, width / 2, 400, 600, 50); // Muestra el botón de reinicio
+  image(victoria, 100, 120); // Muestra la imagen de victoria
+  image(restart, 25, 350, 600, 50); // Muestra el botón de reinicio
 }
 
 public void verPantallaDerrota() {
   PImage derrota = loadImage("PERDISTE.png");
   PImage reintentar = loadImage("REINTENTAR.png");
-  imageMode(CENTER);
-  image(derrota, width / 2, height / 2); // Muestra la imagen de derrota
-  image(reintentar, width / 2, 400, 600, 50); // Muestra el botón de reintentar
+  image(derrota, 100, 120); // Muestra la imagen de derrota
+  image(reintentar, 25, 350, 600, 50); // Muestra el botón de reintentar
 }
 
 public void iniciarJuego() {
@@ -66,6 +64,17 @@ public void iniciarJuego() {
   escenario.dibujarObjetos();
   escenario.personaje.display();
   escenario.verificarColisiones();
+ 
+  //Establece la condicion para que aparezca la pantalla de derrota
+  if(escenario.personaje.getVida()<=0 && estado==MaquinaDeEstados.JUGANDO){
+    estado=MaquinaDeEstados.PERDIENDO_PARTIDA;
+    player.pause();
+}
+  //Establece la condicion para que aparezca la pantalla de victoria
+  if(escenario.personaje.getExperiencia()>=200 && estado==MaquinaDeEstados.JUGANDO){
+    estado=MaquinaDeEstados.GANANDO_PARTIDA;
+    player.pause();
+  }
   
   
   // Movimiento del personaje basado en el JoyPad
