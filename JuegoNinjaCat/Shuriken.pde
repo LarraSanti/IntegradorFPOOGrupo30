@@ -7,7 +7,7 @@ class Shuriken extends Objeto {
 
   public Shuriken(Transform transform, ImageComponent imageComponent) {
     super(transform, imageComponent);
-    this.direccion = gravedad ; // Aplicar gravedad como aceleración
+    this.direccion = gravedad ; // Aplicar direccion como gravedad
   }
 
   public Shuriken(Transform transform, ImageComponent imageComponent, PVector velocidad) {
@@ -27,7 +27,7 @@ class Shuriken extends Objeto {
 
   @Override
   public void display() {
-   //imageMode(CENTER);
+      //imageMode(CENTER);
     imageComponent.displayImage(transform.getPosicion(), 50, 50);
   }
 }

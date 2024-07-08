@@ -9,7 +9,7 @@ public void setup(){
   estado= MaquinaDeEstados.INICIANDO;
   //manejadorObjetos=new ManejadorDeObjetos();
   joyPad= new JoyPad();
-  fondo=loadImage("PantallaInicio.png");
+     fondo=loadImage("PantallaInicio.png");
 
 }
 
@@ -32,7 +32,8 @@ public void draw(){
   }
 }
 public void verPantallaInicio(){
-  image(fondo, 0,0,width,height);  
+ image(fondo, 0,0,width,height);  
+  
 }
 public void verPantallaVictoria(){
   PImage victoria;
@@ -52,7 +53,13 @@ public void verPantallaDerrota(){
 
 public void iniciarJuego(){
   escenario.dibujar();
-  escenario.dibujarObjetos();
+  if (frameCount % 30 == 0) { // Generar un nuevo objeto cada segundo (suponiendo 30 FPS)
+    escenario.agregarObjetos();
+  }
+  escenario.manejadorObjetos.moverObjetos();
+  escenario.manejadorObjetos.verificarColisiones(escenario.personaje);
+
+  
   
   if(joyPad.isRightPressed()){
     escenario.personaje.mover(1);
@@ -62,6 +69,7 @@ public void iniciarJuego(){
   }
   escenario.personaje.aplicarGravedad();
 }
+
 public void keyPressed(){
   if(keyCode==ENTER && (estado == MaquinaDeEstados.INICIANDO || estado == MaquinaDeEstados.PERDIENDO_PARTIDA || estado == MaquinaDeEstados.GANANDO_PARTIDA)){
     estado = MaquinaDeEstados.JUGANDO;

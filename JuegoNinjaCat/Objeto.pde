@@ -10,14 +10,14 @@ abstract class Objeto implements IVisualizable {
   public Objeto(Transform transform, ImageComponent imageComponent) {
     this.transform = transform;
     this.imageComponent = imageComponent;
-    this.colisionador = new Colisionador(transform.getPosicion(), 25); // Tamaño de colisionador por defecto
+    this.colisionador = new Colisionador(transform.getPosicion(), 25); 
   }
 
   public Objeto(Transform transform, ImageComponent imageComponent, PVector velocidad) {
     this.transform = transform;
     this.imageComponent = imageComponent;
     this.velocidad = velocidad;
-    this.colisionador = new Colisionador(transform.getPosicion(), 25); // Tamaño de colisionador por defecto
+    this.colisionador = new Colisionador(transform.getPosicion(), 25); 
   }
 
   // Métodos abstractos
