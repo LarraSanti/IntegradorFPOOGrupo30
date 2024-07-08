@@ -52,6 +52,11 @@ class Escenario {
     Transform transformBaldeAgua = new Transform(new PVector(-45, height-45));
     ImageComponent imageBaldeAgua= new ImageComponent("BaldeAgua.png");
     objetos.add(new BaldeAgua(transformBaldeAgua, imageBaldeAgua, new PVector(150,0)));
+    
+    //Inicializar el Shuriken
+    Transform transformShuriken = new Transform(new PVector(width/2, -50));
+    ImageComponent imageShuriken= new ImageComponent("Shuriken0.png");
+    objetos.add(new Shuriken(transformShuriken, imageShuriken, new PVector(0,170)));
   }
   
   public void verificarColisiones(){
@@ -79,6 +84,16 @@ class Escenario {
             crearBaldeAgua();
           }
         }
+        if(o instanceof Shuriken) {
+          Colisionador colisionadorShuriken = o.getColisionador();
+          if(personaje.getColisionador().verificarColision(colisionadorShuriken)){
+            objetos.remove(i);
+            println("Colisión detectada con Shuriken");
+            personaje.reducirVida(2);
+            //personaje.setExperiencia(personaje.getExperiencia()+5);
+            crearShuriken();         
+          }
+        } 
        }
       }
     }
@@ -94,10 +109,13 @@ class Escenario {
             objetos.remove(i);
             crearBonusSushi();
         
-        }else if (o instanceof BaldeAgua && o.transform.getPosicion().x > width) {
+        }else if (o instanceof BaldeAgua && o.transform.getPosicion().x > width+width) {
           objetos.remove(i);
           crearBaldeAgua();
           
+        }else if (o instanceof Shuriken && o.transform.getPosicion().y > height) {
+          objetos.remove(i);
+          crearShuriken();
         }
       }
     }
@@ -109,11 +127,18 @@ class Escenario {
     objetos.add(nuevoSushi);
   }
   public void crearBaldeAgua(){
-    Transform transformBaldeAgua = new Transform(new PVector(-45, height-45));
+    Transform transformBaldeAgua = new Transform(new PVector(-1000, height-45));
     ImageComponent imageBaldeAgua= new ImageComponent("BaldeAgua.png");
     BaldeAgua nuevoBaldeAgua= new BaldeAgua(transformBaldeAgua, imageBaldeAgua, new PVector(150,0));
     objetos.add(nuevoBaldeAgua);
   }
+  public void crearShuriken(){
+    Transform transformShuriken = new Transform(new PVector(random(width), random(-200,-50)));
+    ImageComponent imageShuriken= new ImageComponent("Shuriken0.png");
+    Shuriken nuevoShuriken= new Shuriken(transformShuriken, imageShuriken, new PVector(0,170));
+    objetos.add(nuevoShuriken);
+  }
+  
 
   // Método para establecer la posición del escenario
   public void setPosicion(PVector posicion) {
