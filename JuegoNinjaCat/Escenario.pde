@@ -47,6 +47,11 @@ class Escenario {
     Transform transformBonusSushi = new Transform(new PVector(width, height/2));
     ImageComponent imageBonusSushi= new ImageComponent("BonusSushi.png");
     objetos.add(new BonusSushi(transformBonusSushi, imageBonusSushi, new PVector(150,4)));
+    
+    //Inicializar el BaldeAgua
+    Transform transformBaldeAgua = new Transform(new PVector(-45, height-45));
+    ImageComponent imageBaldeAgua= new ImageComponent("BaldeAgua.png");
+    objetos.add(new BaldeAgua(transformBaldeAgua, imageBaldeAgua, new PVector(150,0)));
   }
   
   public void verificarColisiones(){
@@ -63,7 +68,17 @@ class Escenario {
             //personaje.setExperiencia(personaje.getExperiencia()+5);
             crearBonusSushi();         
           }
-        }        
+        }
+        if (o instanceof BaldeAgua) {
+          Colisionador colisionadorBalde = o.getColisionador();
+          if (personaje.getColisionador().verificarColision(colisionadorBalde)){ 
+            objetos.remove(i);
+            // Acción a realizar en caso de colisión
+            println("Colisión detectada con BaldeAgua");
+            personaje.reducirVida(1);
+            crearBaldeAgua();
+          }
+        }
        }
       }
     }
@@ -79,6 +94,10 @@ class Escenario {
             objetos.remove(i);
             crearBonusSushi();
         
+        }else if (o instanceof BaldeAgua && o.transform.getPosicion().x > width) {
+          objetos.remove(i);
+          crearBaldeAgua();
+          
         }
       }
     }
@@ -88,6 +107,12 @@ class Escenario {
     ImageComponent imageBonusSushi= new ImageComponent("BonusSushi.png");
     BonusSushi nuevoSushi= new BonusSushi(transformBonusSushi, imageBonusSushi, new PVector(150,0));
     objetos.add(nuevoSushi);
+  }
+  public void crearBaldeAgua(){
+    Transform transformBaldeAgua = new Transform(new PVector(-45, height-45));
+    ImageComponent imageBaldeAgua= new ImageComponent("BaldeAgua.png");
+    BaldeAgua nuevoBaldeAgua= new BaldeAgua(transformBaldeAgua, imageBaldeAgua, new PVector(150,0));
+    objetos.add(nuevoBaldeAgua);
   }
 
   // Método para establecer la posición del escenario
