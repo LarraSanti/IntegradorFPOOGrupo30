@@ -1,8 +1,7 @@
 class ImageComponent {
-  //Atributos
   private PImage imagen;
 
-  // Constructor
+  // Constructor de la clase
   public ImageComponent(String ruta) {
     // Carga la imagen desde la ruta especificada
     imagen = loadImage(ruta);
@@ -14,7 +13,7 @@ class ImageComponent {
     image(imagen, posicion.x, posicion.y);
   }
 
-  // Método sobrecargado para mostrar la imagen en una posición y con dimensiones específicas
+  // Sobrecarga para mostrar la imagen en una posición y con dimensiones específicas
   public void displayImage(PVector posicion, int ancho, int alto) {
     // Dibuja la imagen en la posición especificada
     // y la redimensiona a 'ancho' x 'alto'
