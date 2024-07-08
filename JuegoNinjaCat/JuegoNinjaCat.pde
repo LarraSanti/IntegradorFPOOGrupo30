@@ -3,17 +3,13 @@ private Escenario escenario;
 private JoyPad joyPad;
 private int estado; //Indica en que estado se encuentra el juego
 private PImage fondo;
-private PImage titulo;
-private PImage start;
 
 public void setup(){
   size(640,480);
   estado= MaquinaDeEstados.INICIANDO;
   //manejadorObjetos=new ManejadorDeObjetos();
   joyPad= new JoyPad();
-  start=loadImage("Press Start.png");
-  titulo=loadImage("TITLE.png");
-  fondo=loadImage("Background.jpg");
+  fondo=loadImage("PantallaInicio.png");
 
 }
 
@@ -36,10 +32,7 @@ public void draw(){
   }
 }
 public void verPantallaInicio(){
-  image(fondo, 0,0,width,height);
-  image(titulo,160,100,300,50);
-  image(start,160,350,300,50);
-  
+  image(fondo, 0,0,width,height);  
 }
 public void verPantallaVictoria(){
   PImage victoria;

@@ -27,7 +27,7 @@ class Shuriken extends Objeto {
 
   @Override
   public void display() {
-    imageMode(CENTER);
+   //imageMode(CENTER);
     imageComponent.displayImage(transform.getPosicion(), 50, 50);
   }
 }

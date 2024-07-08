@@ -10,7 +10,7 @@ class Escenario{
   
   //Constructores
   public Escenario(){
-    imagen=loadImage("Background.jpg");
+    imagen=loadImage("Background.jpeg");
     frameRate(50);
     //PERSONAJE//
     //*Se crea al Personaje en una posicion especifica y con su imagen
