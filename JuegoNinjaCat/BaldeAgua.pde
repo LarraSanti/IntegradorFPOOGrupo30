@@ -12,8 +12,12 @@ class BaldeAgua extends Objeto{
   //Metodos
   
   public void display(){   
+    this.imageComponent.displayImage(transform.getPosicion(), 50,50);
   }
 
   public void mover(){  
+    //Se mueve en el eje X, hacia la derecha, según la magnitud de la velocidad
+    this.transform.getPosicion().x+=(this.velocidad.x*Time.getDeltaTime(frameRate));
+    this.colisionador.setPosicion(this.transform.getPosicion()); 
   }
 }
