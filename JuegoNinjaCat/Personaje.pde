@@ -1,26 +1,29 @@
 class Personaje implements IVisualizable {
-  private Transform transform;
-  private ImageComponent imageComponent;
-  private int experiencia; 
+  private Transform transform; 
+  private ImageComponent imageComponent; 
+  private int experiencia; // Experiencia del personaje
   private int vida; 
   private PVector velocidad;
-  private boolean isJumping;
-  private float velocidadVertical;
-  private float gravedad;
-  private float impulso;
-  private Colisionador colisionador;
-  
-  public Personaje(){ 
+  private boolean isJumping; // Estado de salto del personaje
+  private float velocidadVertical; // Velocidad vertical para el salto
+  private float gravedad; // Gravedad aplicada al personaje
+  private float impulso; // Fuerza del impulso al saltar
+  private Colisionador colisionador; 
+
+  // Constructor por defecto
+  public Personaje() { 
   }
-  
-  public Personaje(Transform transform, ImageComponent imageComponent){
+
+  // Constructor que inicializa transform y imageComponent
+  public Personaje(Transform transform, ImageComponent imageComponent) {
     this.transform = transform;
     this.imageComponent = imageComponent;
     this.colisionador = new Colisionador(transform.getPosicion(), 50);
     this.vida = 100;
   }
 
-  public Personaje(Transform transform, ImageComponent imageComponent, PVector velocidad){
+  // Constructor que inicializa transform, imageComponent y velocidad
+  public Personaje(Transform transform, ImageComponent imageComponent, PVector velocidad) {
     this.transform = transform;
     this.imageComponent = imageComponent;
     this.velocidad = velocidad;
@@ -28,7 +31,8 @@ class Personaje implements IVisualizable {
     this.vida = 100; 
   }
 
-  public Personaje(Transform transform, ImageComponent imageComponent, PVector velocidad, int experiencia, int vida){
+  // Constructor completo con todos los atributos inicializados
+  public Personaje(Transform transform, ImageComponent imageComponent, PVector velocidad, int experiencia, int vida) {
     this.transform = transform;
     this.imageComponent = imageComponent;
     this.velocidad = velocidad;
@@ -40,29 +44,31 @@ class Personaje implements IVisualizable {
     this.impulso = -20;
     this.colisionador = new Colisionador(transform.getPosicion(), 50);
   }
-  
-  public void display(){
+
+  // Método para mostrar la imagen del personaje en la pantalla
+  public void display() {
     this.imageComponent.displayImage(transform.getPosicion(), 100, 100);
   }
-  
-  public void mover(int direccion){
-    switch(direccion){
-      case 0:{
+
+  // Método para mover el personaje en la dirección especificada
+  public void mover(int direccion) {
+    switch (direccion) {
+      case 0: { // Mover a la izquierda
         this.transform.setPosicion(new PVector(
           this.transform.getPosicion().x - (this.velocidad.x * Time.getDeltaTime(frameRate)),
           this.transform.getPosicion().y
         ));
-        if(this.transform.getPosicion().x < -100){
+        if (this.transform.getPosicion().x < -100) {
           this.transform.setPosicion(new PVector(width, this.transform.getPosicion().y));
         }
         break;
       }
-      case 1: {
+      case 1: { // Mover a la derecha
         this.transform.setPosicion(new PVector(
           this.transform.getPosicion().x + (this.velocidad.x * Time.getDeltaTime(frameRate)),
           this.transform.getPosicion().y
         ));
-        if (this.transform.getPosicion().x > width){
+        if (this.transform.getPosicion().x > width) {
           this.transform.setPosicion(new PVector(-100, this.transform.getPosicion().y));
         }
         break;
@@ -70,15 +76,17 @@ class Personaje implements IVisualizable {
     }
     this.colisionador.setPosicion(this.transform.getPosicion());
   }
-  
-  public void saltar(){
+
+  // Método para hacer que el personaje salte
+  public void saltar() {
     if (!isJumping) {
       isJumping = true;
       velocidadVertical = impulso;
     }
   }
-  
-  public void aplicarGravedad(){
+
+  // Método para aplicar la gravedad al personaje mientras está saltando
+  public void aplicarGravedad() {
     if (isJumping) {
       velocidadVertical += gravedad;
       this.transform.setPosicion(new PVector(
@@ -97,32 +105,41 @@ class Personaje implements IVisualizable {
     this.colisionador.setPosicion(this.transform.getPosicion());
   }
 
+  // Getter para obtener el colisionador del personaje
   public Colisionador getColisionador() {
     return this.colisionador;
   }
-  
-  public void deslizar(){
+
+  // Método vacío para deslizar (a implementar)
+  public void deslizar() {
   }
 
-  public void setVelocidad(PVector velocidad){
+  // Setters y getters para velocidad, experiencia y vida
+  public void setVelocidad(PVector velocidad) {
     this.velocidad = velocidad;   
   }
-  public PVector getVelocidad(){
+
+  public PVector getVelocidad() {
     return this.velocidad;
   }
-  public void setExperiencia(int experiencia){
+
+  public void setExperiencia(int experiencia) {
     this.experiencia = experiencia;
   }
-  public int getExperiencia(){
+
+  public int getExperiencia() {
     return this.experiencia;
   }
-  public void setVida(int vida){
+
+  public void setVida(int vida) {
     this.vida = vida;
   }
-  public int getVida(){
+
+  public int getVida() {
     return this.vida;
   }
 
+  // Método para reducir la vida del personaje
   public void reducirVida(int cantidad) {
     this.vida -= cantidad;
     if (this.vida < 0) {
