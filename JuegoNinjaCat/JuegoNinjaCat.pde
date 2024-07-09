@@ -1,5 +1,4 @@
-import ddf.minim.*; // library Minim importada
-
+import ddf.minim.*;
 
 // Variables globales
 private Escenario escenario; 
@@ -90,7 +89,7 @@ public void iniciarJuego() {
 public void keyPressed() {
   if (keyCode == ENTER && (estado == MaquinaDeEstados.INICIANDO || estado == MaquinaDeEstados.PERDIENDO_PARTIDA || estado == MaquinaDeEstados.GANANDO_PARTIDA)) {
     estado = MaquinaDeEstados.JUGANDO; // Cambia el estado a jugando
-    escenario = new Escenario(); // Inicializa un nuevo escenario
+    escenario = new Escenario(minim); // Inicializa un nuevo escenario con Minim
     escenario.setPosicion(new PVector(0, 0)); // Establece la posición inicial del escenario
   }
   // Control del JoyPad
