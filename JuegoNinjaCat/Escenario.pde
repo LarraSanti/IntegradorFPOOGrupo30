@@ -1,3 +1,4 @@
+
 class Escenario {
   // Atributos privados de la clase
   private PVector posicion; 
@@ -6,8 +7,18 @@ class Escenario {
   private Personaje personaje; 
   private Hud hud; // Interfaz de usuario para mostrar información del personaje
   
+  // Atributos para sonido
+  AudioPlayer[] sonidos; // Declaración de un array para los sonidos
+  String[] nombresSonidos = {"sushiHit.mp3", "baldeAguaHit.mp3", "shurikenHit.mp3", "perroMaderaHit.mp3"};
+  
   // Constructor por defecto del escenario
-  public Escenario() {
+  public Escenario(Minim minim) {
+    // Cargar los sonidos
+    sonidos = new AudioPlayer[nombresSonidos.length];// Inicializa el array de sonidos con el tamaño del array de nombres
+    for (int i = 0; i < nombresSonidos.length; i++) {
+      sonidos[i] = minim.loadFile("data/" + nombresSonidos[i]);// Carga cada sonido
+    }
+    
     // Cargar imagen de fondo
     imagen = loadImage("Background.jpeg");
     // Establecer la tasa de cuadros por segundo
@@ -75,6 +86,9 @@ class Escenario {
             objetos.remove(i);
             println("Colisión detectada con Sushi");
             personaje.aumentarExperiencia(5);
+            sonidos[0].rewind(); // Reinicia el audio 
+            sonidos[0].play();
+            sonidos[0].setGain(-10);// Ajusta el volumen
             //personaje.setExperiencia(personaje.getExperiencia()+5);
             crearNuevoBonusSushi();         
           }
@@ -86,6 +100,9 @@ class Escenario {
             // Acción a realizar en caso de colisión
             println("Colisión detectada con BaldeAgua");
             personaje.reducirVida(1);
+            sonidos[1].rewind(); // Reinicia el audio 
+            sonidos[1].play();
+            sonidos[1].setGain(1);// Ajusta el volumen
             crearNuevoBaldeAgua();
           }
         }
@@ -95,6 +112,9 @@ class Escenario {
             objetos.remove(i);
             println("Colisión detectada con Shuriken");
             personaje.reducirVida(2);
+            sonidos[2].rewind();// Reinicia el audio 
+            sonidos[2].play();
+            sonidos[2].setGain(-8);// Ajusta el volumen
             //personaje.setExperiencia(personaje.getExperiencia()+5);
             crearNuevoShuriken();         
           }
@@ -105,6 +125,9 @@ class Escenario {
             objetos.remove(i);
             println("Colisión detectada con PerroMadera");
             personaje.reducirExperiencia(10);
+            sonidos[3].rewind();// Reinicia el audio 
+            sonidos[3].play();
+            sonidos[3].setGain(-9);// Ajusta el volumen
             //personaje.setExperiencia(personaje.getExperiencia()+5);
             crearNuevoPerroMadera();         
           }
