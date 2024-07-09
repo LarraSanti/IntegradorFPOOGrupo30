@@ -63,19 +63,7 @@ public void iniciarJuego() {
   escenario.dibujarObjetos();
   escenario.personaje.display();
   escenario.verificarColisiones();
- 
-  //Establece la condicion para que aparezca la pantalla de derrota
-  if(escenario.personaje.getVida()<=0 && estado==MaquinaDeEstados.JUGANDO){
-    estado=MaquinaDeEstados.PERDIENDO_PARTIDA;
-    player.pause();
-}
-  //Establece la condicion para que aparezca la pantalla de victoria
-  if(escenario.personaje.getExperiencia()>=200 && estado==MaquinaDeEstados.JUGANDO){
-    estado=MaquinaDeEstados.GANANDO_PARTIDA;
-    player.pause();
-  }
-  
-  
+   
   // Movimiento del personaje basado en el JoyPad
   if (joyPad.isRightPressed()) {
     escenario.personaje.mover(1);
@@ -108,6 +96,16 @@ public void keyPressed() {
   }
   if (key == 'g' && estado == MaquinaDeEstados.JUGANDO) {
     estado = MaquinaDeEstados.GANANDO_PARTIDA;
+  }
+   //Establece la condicion para que aparezca la pantalla de derrota
+  if(escenario.personaje.getVida()<=0 && estado==MaquinaDeEstados.JUGANDO){
+    estado=MaquinaDeEstados.PERDIENDO_PARTIDA;
+    player.pause();
+}
+  //Establece la condicion para que aparezca la pantalla de victoria
+  if(escenario.personaje.getExperiencia()>=200 && estado==MaquinaDeEstados.JUGANDO){
+    estado=MaquinaDeEstados.GANANDO_PARTIDA;
+    player.pause();
   }
 }
 
