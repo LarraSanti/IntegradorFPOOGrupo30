@@ -110,10 +110,6 @@ class Personaje implements IVisualizable {
     return this.colisionador;
   }
 
-  // Método vacío para deslizar (a implementar)
-  public void deslizar() {
-  }
-  
    // Método para reducir la vida del personaje
   public void reducirVida(int cantidad) {
     this.vida -= cantidad;
