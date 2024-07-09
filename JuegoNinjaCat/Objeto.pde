@@ -25,13 +25,9 @@ abstract class Objeto implements IVisualizable {
   
   // Implementación de la interfaz
   public void display() {
-    imageComponent.displayImage(transform.getPosicion());
   }
 
-  // Métodos accesorios
-  public Transform getTransform() {
-    return transform;
-  }
+  // Métodos accesores
 
   public Colisionador getColisionador() {
     return colisionador;

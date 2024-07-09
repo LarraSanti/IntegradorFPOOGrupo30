@@ -26,7 +26,7 @@ class Escenario {
     
     // Inicializar el personaje
     Transform transformPersonaje = new Transform(new PVector(width / 2, height - 90));
-    ImageComponent imagePersonaje = new ImageComponent("NinjaCat.png");
+    ImageComponent imagePersonaje = new ImageComponent("NinjaCat1.png");
     personaje = new Personaje(transformPersonaje, imagePersonaje, new PVector(320, 0), 0, 7);
     objetos= new ArrayList<Objeto>();
     agregarObjetos();
